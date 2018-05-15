@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LikeButton from '../components/likeButton'
 // import { connect } from 'react-redux'
 // import { FETCH_DOGS } from '../actions/page '
 
@@ -13,9 +14,8 @@ fetchMeADoggo(url) {
   render() {
       return(
         <div>
-        <p className="ShowGame">Your doggo: {this.fetchMeADoggo()}</p>
-        <div>
-        </div>
+          <p className="ShowGame">Your doggo: {this.fetchMeADoggo()}</p>
+          <LikeButton/>
         </div>
       )
     }

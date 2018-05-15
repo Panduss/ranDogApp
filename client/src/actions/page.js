@@ -57,13 +57,14 @@
 //
 //
 
- import * as request from 'superagent'
+import * as request from 'superagent'
 
 const baseUrl = 'https://dog.ceo/api'
 
 export const FETCH_DOGS = 'FETCH_DOGS'
 
 export const fetchDogs = (breed, image) => (dispatch) => {
+  console.log('OK until here')
   request
     .get(`${baseUrl}/${breed}/${image}/random`)
     .then(response => dispatch({
@@ -71,6 +72,7 @@ export const fetchDogs = (breed, image) => (dispatch) => {
       payload: { breed, image }
     }))
     .catch(err => alert(err))
+
 }
 
 // export const fetchAllProducts = () => (dispatch) => {
