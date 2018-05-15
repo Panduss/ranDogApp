@@ -1,7 +1,6 @@
-// import currentWord from './reducerWord'
-// import inputArray from './reducerInputArray'
-//
-// export default {
-//   currentWord,
-//   inputArray,
-// }
+//import currentWord from './reducerWord'
+import ranDog from './reducerRanDog'
+
+export default {
+  ranDog,
+}
