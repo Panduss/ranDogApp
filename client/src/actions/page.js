@@ -85,3 +85,13 @@ export const fetchDogs = (breed, image) => (dispatch) => {
 //     .catch(err => alert(err))
 //
 // }
+
+export const LIKED_DOG = 'LIKED_DOG'
+
+export const likedDog = (breed) => {
+  console.log('calls the second action!')
+    return {
+      type: LIKED_DOG,
+      payload: {breed}
+    }
+}

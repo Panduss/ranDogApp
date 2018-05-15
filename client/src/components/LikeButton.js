@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { fetchDogs } from '../actions/page'
+import { fetchDogs, likedDog } from '../actions/page'
 
 export class LikeButton extends PureComponent {
 
   handleClick = () => {
-    this.props.fetchDogs()
+    this.props.fetchDogs();
+    this.props.likedDog();
   }
 
   render() {
@@ -15,7 +16,7 @@ export class LikeButton extends PureComponent {
   }
 }
 
-export default connect(null, { fetchDogs })(LikeButton)
+export default connect(null, { fetchDogs, likedDog })(LikeButton)
 
 // The button renders
 // Yarn installed superagent

@@ -17,8 +17,4 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
-  {
-    "status": "success",
-    "message": "https://images.dog.ceo/breeds/dingo/n02115641_11220.jpg"
-  }
 }
