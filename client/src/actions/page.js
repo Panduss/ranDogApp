@@ -74,6 +74,7 @@ export const fetchDogs = (response) => (dispatch) => {
       payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/')[5]}
     }))
     .catch(err => alert(err))
+
 }
 
 // export const fetchAllProducts = () => (dispatch) => {
@@ -86,3 +87,13 @@ export const fetchDogs = (response) => (dispatch) => {
 //     .catch(err => alert(err))
 //
 // }
+
+export const LIKED_DOG = 'LIKED_DOG'
+
+export const likedDog = (breed) => {
+  console.log('calls the second action!')
+    return {
+      type: LIKED_DOG,
+      payload: {breed}
+    }
+}
