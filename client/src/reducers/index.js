@@ -1,7 +1,7 @@
-// import currentWord from './reducerWord'
-// import inputArray from './reducerInputArray'
-//
-// export default {
-//   currentWord,
-//   inputArray,
-// }
+import currentUser from './currentUser'
+import login from './login'
+
+export default {
+  currentUser,
+  login,
+}
