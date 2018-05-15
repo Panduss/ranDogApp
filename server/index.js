@@ -1,27 +1,11 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const usersRouter = require('./users/router')
+const verify = require('./jwt').verify
+const User = require('./users/model')
+
 const app = express()
-
-var Sequelize = require('sequelize')
-var sequelize = new Sequelize('postgres://postgres:secret@localhost:5432/postgres')
-
-
-const Users = sequelize.define('users', {
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-}, {
-  tableName: 'users',
-  timestamps: false
-})
+app.use(bodyParser.json())
 
 app.listen(4001, () => console.log('Express API listening on port 4001'))
 
@@ -35,49 +19,32 @@ app.use(function(req, res, next) {
   next()
 })
 
-Users.findById(1).then(users => console.log(JSON.stringify(users)))
+app.use(function(req, res, next) {
+  if (!req.headers.authorization) return next()
 
-app.get('/users', (request, response) => {
-  console.log("we r finding the products")
-  Users.findAll({
-    attributes: [ 'id', 'name', 'email' ]
-  })
-
-.then(result => {
-  response.send({ result })
-})
-
-.catch(err => {
-  response.status(500).send({
-    message: 'Something went wrong!',
-  })
-})
-})
-
-app.post('/users', (request, response) => {
-  const users = request.body
-  Users.create(user)
-    .then(result => {
-      response.send({ result })
+  const auth = req.headers.authorization.split(' ')
+  if (auth[0] === 'Bearer') {
+    verify(auth[1], function(err, jwt) {
+      if (err) {
+        console.error(err)
+        res.status(400).send({
+          message: 'JWT token invalid'
+        })
+      } else {
+        User.findById(jwt.id)
+          .then(entity => {
+            req.user = entity
+            next()
+          })
+          .catch(err => {
+            console.error(err)
+            res.status(500).send({
+              message: 'Something went horribly wrong'
+            })
+          })
+      }
     })
-    .catch(error => {
-      response.status(500).send({
-        mesage: 'something went wrong with postgres',
-        details: error.message
-      })
-    })
+  } else next()
 })
 
-app.get('/users/:id', (request, response) => {
-  const userId = request.params.id
-  Users.findById(userId)
-    .then(result => {
-      response.send(result)
-    })
-    .catch(error => {
-      response.status(500).send({
-        message: 'something went wrong with postgres',
-        details: error.message
-      })
-    })
-})
+app.use(usersRouter)
