@@ -1,24 +1,29 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
-// import { FETCH_DOGS } from '../actions/page '
+import { connect } from 'react-redux'
+import { fetchDogs } from '../actions/page'
+import LikeButton from ‘../components/LikeButton’
+import DislikeButton from ‘../components/DislikeButton’
 
-export default class RanDogData extends Component {
+class RanDogData extends Component {
 
-
-
-fetchMeADoggo(url) {
-  return
+componentDidMount() {
+  this.props.fetchDogs()
 }
-
   render() {
       return(
         <div>
-        <p className="ShowGame">Your doggo: {this.fetchMeADoggo()}</p>
+        <p className="Doggo">Your doggo: {fetchDogs(this.props.ranDog)} </p>
+        {console.log(this.props.ranDog)}
         <div>
+        <LikeButton/>
+         <DislikeButton/>
         </div>
         </div>
       )
     }
 }
 
-//export default connect(null, {newGame})(NewGameButton)
+const mapStateToProps = ({ ranDog }) => ({ ranDog })
+
+// export default connect(null, {fetchDogs})(RanDogData)
+export default connect(mapStateToProps, { fetchDogs })(RanDogData)
