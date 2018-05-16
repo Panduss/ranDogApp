@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const usersRouter = require('./users/router')
 const verify = require('./jwt').verify
 const User = require('./users/model')
+const doglikesRouter = require('./doglikes/router')
 
 const app = express()
 app.use(bodyParser.json())
@@ -48,3 +49,4 @@ app.use(function(req, res, next) {
 })
 
 app.use(usersRouter)
+app.use(doglikesRouter)
