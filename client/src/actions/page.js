@@ -1,3 +1,41 @@
+import * as request from 'superagent'
+
+export const FETCH_DOGS = 'FETCH_DOGS'
+export const LOGIN = 'LOGIN'
+export const LIKED_DOG = 'LIKED_DOG'
+
+export function login(dogURL) {
+  return {
+    type: LOGIN,
+    payload: dogURL
+  }
+}
+
+const baseUrl = 'https://dog.ceo/api/breeds/image/random'
+
+export const fetchDogs = (response) => (dispatch) => {
+  // dispatch({ type: FETCH_DOGS })
+  request
+    .get(`${baseUrl}`)
+    .then(response => dispatch({
+      type: FETCH_DOGS,
+      // from the base url you getmessage back as response which is an object
+      // if you see how it looks like, the object kind of split into keys and
+      // we get back the 3rd and 4th key from it this way.
+      payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/')[5]}
+    }))
+    .catch(err => alert(err))
+
+}
+
+export const likedDog = (breed) => {
+  console.log('calls the second action!')
+    return {
+      type: LIKED_DOG,
+      payload: {breed}
+    }
+}
+
 //                      MAKING API REQUEST
 //
 //     check out action creater diagram in folder
@@ -56,44 +94,3 @@
 //  => CONTINUE WITH REDUX-PROMISE CONTINUED
 //
 //
-import * as request from 'superagent'
-
-const baseUrl = 'https://dog.ceo/api/breeds/image/random'
-
-export const FETCH_DOGS = 'FETCH_DOGS'
-
-export const fetchDogs = (response) => (dispatch) => {
-  // dispatch({ type: FETCH_DOGS })
-  request
-    .get(`${baseUrl}`)
-    .then(response => dispatch({
-      type: FETCH_DOGS,
-      // from the base url you getmessage back as response which is an object
-      // if you see how it looks like, the object kind of split into keys and
-      // we get back the 3rd and 4th key from it this way.
-      payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/')[5]}
-    }))
-    .catch(err => alert(err))
-
-}
-
-// export const fetchAllProducts = () => (dispatch) => {
-//   request
-//     .get(`${baseUrl}/products`)
-//     .then(response => dispatch({
-//       type: FETCHED_ALL_PRODUCTS,
-//       payload: response.body
-//     }))
-//     .catch(err => alert(err))
-//
-// }
-
-export const LIKED_DOG = 'LIKED_DOG'
-
-export const likedDog = (breed) => {
-  console.log('calls the second action!')
-    return {
-      type: LIKED_DOG,
-      payload: {breed}
-    }
-}
