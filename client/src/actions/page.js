@@ -56,21 +56,25 @@
 //  => CONTINUE WITH REDUX-PROMISE CONTINUED
 //
 //
+import * as request from 'superagent'
 
- import * as request from 'superagent'
-
-const baseUrl = 'https://dog.ceo/api'
+const baseUrl = 'https://dog.ceo/api/breeds/image/random'
 
 export const FETCH_DOGS = 'FETCH_DOGS'
 
-export const fetchDogs = (breed, image) => (dispatch) => {
+export const fetchDogs = (response) => (dispatch) => {
+  // dispatch({ type: FETCH_DOGS })
   request
-    .get(`${baseUrl}/${breed}/${image}/random`)
+    .get(`${baseUrl}`)
     .then(response => dispatch({
       type: FETCH_DOGS,
-      payload: { breed, image }
+      // from the base url you getmessage back as response which is an object
+      // if you see how it looks like, the object kind of split into keys and
+      // we get back the 3rd and 4th key from it this way.
+      payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/')[5]}
     }))
     .catch(err => alert(err))
+
 }
 
 // export const fetchAllProducts = () => (dispatch) => {
@@ -83,3 +87,13 @@ export const fetchDogs = (breed, image) => (dispatch) => {
 //     .catch(err => alert(err))
 //
 // }
+
+export const LIKED_DOG = 'LIKED_DOG'
+
+export const likedDog = (breed) => {
+  console.log('calls the second action!')
+    return {
+      type: LIKED_DOG,
+      payload: {breed}
+    }
+}
