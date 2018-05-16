@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchDogs } from '../actions/page'
-import LikeButton from ‘../components/LikeButton’
-import DislikeButton from ‘../components/DislikeButton’
+import LikeButton from '../components/LikeButton'
+import DislikeButton from '../components/DislikeButton'
 
 class RanDogData extends Component {
 
