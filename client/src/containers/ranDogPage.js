@@ -12,8 +12,8 @@ componentDidMount() {
   render() {
       return(
         <div>
-        <p className="Doggo">Your doggo: {fetchDogs(this.props.ranDog)} </p>
-        {console.log(this.props.ranDog)}
+        <p className="Doggo">Your doggo: {this.props.ranDog.name} </p>
+        <img src= {this.props.ranDog.pic}></img>
         <div>
         <LikeButton/>
          <DislikeButton/>
@@ -25,5 +25,4 @@ componentDidMount() {
 
 const mapStateToProps = ({ ranDog }) => ({ ranDog })
 
-// export default connect(null, {fetchDogs})(RanDogData)
 export default connect(mapStateToProps, { fetchDogs })(RanDogData)
