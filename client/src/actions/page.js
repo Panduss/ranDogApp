@@ -22,7 +22,7 @@ export const fetchDogs = (response) => (dispatch) => {
       // from the base url you getmessage back as response which is an object
       // if you see how it looks like, the object kind of split into keys and
       // we get back the 3rd and 4th key from it this way.
-      payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/')[5]}
+      payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/').join('/')}
     }))
     .catch(err => alert(err))
 
