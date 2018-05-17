@@ -2,8 +2,9 @@ import * as request from 'superagent'
 
 export const FETCH_DOGS = 'FETCH_DOGS'
 export const LOGIN = 'LOGIN'
-export const LIKED_DOG = 'LIKED_DOG'
+
 export const MATCH = 'MATCH'
+
 
 export function login(DBUrl) {
   return {
@@ -14,6 +15,7 @@ export function login(DBUrl) {
 
 const DBUrl = 'http://localhost:4001'
 const baseUrl = 'https://dog.ceo/api/breeds/image/random'
+const DBUrl = 'http://localhost:4001'
 
 export const fetchDogs = (response) => (dispatch) => {
   request
@@ -29,13 +31,21 @@ export const fetchDogs = (response) => (dispatch) => {
 
 }
 
-// export const dogLikes = (breed) => (dispatch) => {
-//   request
-//   .post(`${DBUrl}/doglikes`)
-//   .send({breed: 'doog'})
-//   .then(response => alert(JSON.stringify(response.body)))
-// }
-//
+
+export const doglikes = (userId, breed) => (dispatch, getState) => {
+
+  const state = getState()
+  const userId = state.currentUser.id
+  const breed = state.ranDog.name
+
+  request
+    .post(`${DBUrl}/doglikes`)
+    .send({ userId, breed })
+    .then()
+}
+
+
+
 export const showMatches = (response) => (dispatch) => {
 
   request
@@ -49,3 +59,4 @@ export const showMatches = (response) => (dispatch) => {
     }
   )
 }
+

@@ -3,18 +3,20 @@ const Router = require('express').Router
 
 const router = new Router()
 
-router.post('/users/doglikes', (req, res) => {
+
+router.post('/doglikes', (req, res) => {
+  console.log(req.body)
 
   const doglike = {
-    userid: req.body.userid,
+    userid: req.body.userId,
     breed: req.body.breed
   }
-console.log("who let te dogs out")
+
   DogLikes.create(doglike)
     .then(entity => {
       res.send({
-        userid: entity.userid,
-        breed: entity.breed
+        breed: entity.breed,
+        id: entity.id
       })
     })
     .catch(err => {
