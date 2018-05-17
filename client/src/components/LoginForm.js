@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import './LoginForm.css';
 
 export default class LoginForm extends PureComponent {
   state = {}
@@ -19,8 +20,8 @@ export default class LoginForm extends PureComponent {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
+        <div className="email" >
+          <label htmlFor="email">EMAIL</label>
           <input
             type="email"
             name="email"
@@ -31,7 +32,7 @@ export default class LoginForm extends PureComponent {
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">PASSWORD</label>
           <input
             type="password"
             name="password"

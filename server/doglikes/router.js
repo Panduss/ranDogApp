@@ -3,8 +3,10 @@ const Router = require('express').Router
 
 const router = new Router()
 
+
 router.post('/doglikes', (req, res) => {
   console.log(req.body)
+
   const doglike = {
     userid: req.body.userId,
     breed: req.body.breed
@@ -23,6 +25,17 @@ router.post('/doglikes', (req, res) => {
         message: 'Something went wrong'
       })
     })
+})
+
+router.get('/doglikes', (req, res) => {
+  DogLikes.findAll({
+    attributes: ['id', 'userid', 'breed']
+  })
+  .then(result => {
+    res.send(result)
+  })
+  // const match = {
+  //   userid:
 })
 
 
