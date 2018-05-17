@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Sans');
 
-
-.label {
+label
+{
   font-family: 'Francois One', sans-serif;
-  text-align: center;
-  color: white;
-  background-color: #595959;
-  font-size: 2em;
 }
