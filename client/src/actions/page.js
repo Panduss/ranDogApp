@@ -3,7 +3,6 @@ import * as request from 'superagent'
 export const FETCH_DOGS = 'FETCH_DOGS'
 export const LOGIN = 'LOGIN'
 export const LIKED_DOG = 'LIKED_DOG'
-export const MATCH = 'MATCH'
 
 export function login(dogURL) {
   return {
@@ -12,7 +11,6 @@ export function login(dogURL) {
   }
 }
 
-const dogUrl = 'http://localhost:4001'
 const baseUrl = 'https://dog.ceo/api/breeds/image/random'
 
 export const fetchDogs = (response) => (dispatch) => {
@@ -36,21 +34,6 @@ export const likedDog = (breed) => {
       type: LIKED_DOG,
       payload: {breed}
     }
-}
-
-export const showMatches = (response) => (dispatch) => {
-
-  request
-  .get(`${dogUrl}/doglikes`)
-  .then(result => {
-    console.log(result.body);
-      dispatch({
-        type: MATCH,
-        payload: result.body,
-      })
-    }
-  )
-  // console.log(response.body)
 }
 
 //                      MAKING API REQUEST
