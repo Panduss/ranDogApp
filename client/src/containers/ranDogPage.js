@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchDogs } from '../actions/page'
 import LikeButton from '../components/LikeButton'
 import DislikeButton from '../components/DislikeButton'
+import TopTen from '../components/toTopTen'
 
 class RanDogData extends Component {
 
@@ -18,6 +19,7 @@ componentDidMount() {
         <LikeButton/>
          <DislikeButton/>
         </div>
+        <TopTen />
         </div>
       )
     }
