@@ -4,16 +4,15 @@ const Router = require('express').Router
 const router = new Router()
 
 router.post('/doglikes', (req, res) => {
-
+  console.log(req.body)
   const doglike = {
     userid: req.body.userid,
     breed: req.body.breed
   }
-console.log("who let te dogs out")
+
   DogLikes.create(doglike)
     .then(entity => {
       res.send({
-        userid: entity.userid,
         breed: entity.breed
       })
     })
@@ -24,5 +23,6 @@ console.log("who let te dogs out")
       })
     })
 })
+
 
 module.exports = router

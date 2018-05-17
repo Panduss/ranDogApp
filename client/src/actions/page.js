@@ -12,6 +12,7 @@ export function login(dogURL) {
 }
 
 const baseUrl = 'https://dog.ceo/api/breeds/image/random'
+const DBUrl = 'http://localhost:4001'
 
 export const fetchDogs = (response) => (dispatch) => {
   // dispatch({ type: FETCH_DOGS })
@@ -28,13 +29,28 @@ export const fetchDogs = (response) => (dispatch) => {
 
 }
 
-export const likedDog = (breed) => {
-  console.log('calls the second action!')
-    return {
-      type: LIKED_DOG,
-      payload: {breed}
-    }
+export const doglikes = (userid, breed) => (dispatch) => {
+  console.log(userid, breed)
+  request
+    .post(`${DBUrl}/doglikes`)
+    .send({userid: '1', breed: 'doggo'})
+    .then(response => alert(JSON.stringify(response.body)))
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //                      MAKING API REQUEST
 //
