@@ -10,7 +10,7 @@ componentDidMount() {
   render() {
       return(
         <ul>
-        <li className="Doggo">Your doggo: {this.componentDidMount} </li>
+        <li className="Doggo">Your hooman: {this.showMatches()} </li>
         </ul>
       )
     }

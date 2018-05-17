@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { fetchDogs, doglikes, showMatches } from '../actions/page'
+import { fetchDogs, doglikes } from '../actions/page'
 
 
 export class LikeButton extends PureComponent {
@@ -8,7 +8,6 @@ export class LikeButton extends PureComponent {
   handleClick = () => {
     this.props.fetchDogs();
     this.props.doglikes();
-    this.props.showMatches();
   }
 
   render() {
@@ -19,4 +18,4 @@ export class LikeButton extends PureComponent {
 }
 
 
-export default connect(null, { fetchDogs, doglikes, showMatches })(LikeButton)
+export default connect(null, { fetchDogs, doglikes })(LikeButton)
