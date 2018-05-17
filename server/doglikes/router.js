@@ -25,4 +25,16 @@ console.log("who let te dogs out")
     })
 })
 
+router.get('/doglikes', (req, res) => {
+  DogLikes.findAll({
+    attributes: ['id', 'userid', 'breed']
+  })
+  .then(result => {
+    res.send(result)
+  })
+  // const match = {
+  //   userid:
+})
+
+
 module.exports = router
