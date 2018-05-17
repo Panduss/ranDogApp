@@ -16,8 +16,8 @@ class LoginPage extends PureComponent {
     console.log("hey we're getting something")
     return (
       <div>
-      <div class="topnav">
-          <a class="active" href="#home">Sign Up</a>
+      <div className="topnav">
+          <a className="active" href="#home">Sign Up</a>
       </div>
       <div id="banner" className="banner">
           <h1 className="title"><img src={require('../images/Dog Paw Heart Clipart 09.jpg')} />RANDOG
