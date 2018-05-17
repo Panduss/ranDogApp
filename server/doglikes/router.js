@@ -6,14 +6,15 @@ const router = new Router()
 router.post('/doglikes', (req, res) => {
   console.log(req.body)
   const doglike = {
-    userid: req.body.userid,
+    userid: req.body.userId,
     breed: req.body.breed
   }
 
   DogLikes.create(doglike)
     .then(entity => {
       res.send({
-        breed: entity.breed
+        breed: entity.breed,
+        id: entity.id
       })
     })
     .catch(err => {

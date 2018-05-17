@@ -23,6 +23,7 @@ componentDidMount() {
     }
 }
 
+
 const mapStateToProps = ({ ranDog }) => ({ ranDog })
 
 export default connect(mapStateToProps, { fetchDogs })(RanDogData)

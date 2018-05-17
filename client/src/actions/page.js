@@ -2,7 +2,6 @@ import * as request from 'superagent'
 
 export const FETCH_DOGS = 'FETCH_DOGS'
 export const LOGIN = 'LOGIN'
-export const LIKED_DOG = 'LIKED_DOG'
 
 export function login(dogURL) {
   return {
@@ -29,13 +28,17 @@ export const fetchDogs = (response) => (dispatch) => {
 
 }
 
-export const doglikes = (userid, breed) => (dispatch) => {
-  console.log(userid, breed)
+export const doglikes = (userId, breed) => (dispatch, getState) => {
+
+
+  const state = getState()
+  const userId = state.currentUser.id
+  const breed = state.ranDog.name
+
   request
     .post(`${DBUrl}/doglikes`)
-    .send({userid: '1', breed: 'doggo'})
-    .then(response => alert(JSON.stringify(response.body)))
-
+    .send({ userId, breed })
+    .then()
 }
 
 
