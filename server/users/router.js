@@ -8,14 +8,14 @@ const router = new Router()
 router.post('/users', (req, res) => {
   const user = {
     email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 10)
+    password: bcrypt.hashSync(req.body.password, 10),
   }
 
   User.create(user)
     .then(entity => {
       res.send({
         id: entity.id,
-        email: entity.email
+        email: entity.email,
       })
     })
     .catch(err => {
@@ -62,5 +62,63 @@ router.get('/secret', (req, res) => {
     })
   }
 })
+
+
+router.get('/users/:id', (req, res) => {
+  const userId = req.params.id
+  User.findById(userId)
+    .then(result => {
+      if (!result) {
+        res.status(404).send({ error: 'Does not exist' })
+      } else {
+        res.send(result)
+      }
+    })
+    .catch(err => {
+      res.status(500).send({ error: 'Something went wrong with Postgres' })
+    })
+})
+
+router.get('/users', (req, res) => {
+  User.findAll({
+    attributes: ['id', 'email']
+  })
+    .then(result => {
+      // do something with result
+      res.send({
+        products: result
+      })
+    })
+    .catch(err => {
+      // there was an error, return some HTTP error code
+      res.status(500).send({ error: 'Something went wrong with Postgres' })
+    })
+})
+
+
+
+
+
+// router.post('/users', (req, res) => {
+//   const like = {
+//       button: req.body.email,
+//       password: bcrypt.hashSync(req.body.password, 10)
+//   }
+//
+//   User.create(user)
+//     .then(entity => {
+//       res.send({
+//         id: entity.id,
+//         email: entity.email
+//       })
+//     })
+//     .catch(err => {
+//       console.error(err)
+//       res.status(500).send({
+//         message: 'Something went wrong'
+//       })
+//     })
+// })
+
 
 module.exports = router

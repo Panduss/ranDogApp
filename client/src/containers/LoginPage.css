@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Sans');
+
+
+.banner {
+  font-family: 'Francois One', sans-serif;
+  text-align: center;
+  color: white;
+  background-color: #595959;
+  font-size: 4em;
+}
+
+.sub-title {
+    font-size: 30px;
+}
+
+.sub-title img {
+object-fit: contain;
+width: 20%;
+
+}
+
+.sub-title h2 {
+
+}
