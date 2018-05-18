@@ -39,4 +39,25 @@ router.get('/doglikes', (req, res) => {
 })
 
 
+
+router.get('/doglikes/:id', (request, response) => {
+  const houseId = request.params.id
+console.log('getting dog')
+  client.query('SELECT * FROM doglikes WHERE id = $1', [doglikesId], (error, result) => {
+    if (error) {
+      response.status(500).send({
+        message: 'Something went wrong with Postgres!',
+        details: error.message
+      })
+    } else if (result.rows[0]) {
+      response.send(result.rows[0])
+    } else {
+      response.status(404).send({
+        message: 'House not found!'
+      })
+    }
+  })
+})
+
+
 module.exports = router

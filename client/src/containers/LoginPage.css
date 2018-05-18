@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Sans');
 
 
-.banner h1 {
+.loginbanner h1 {
   font-family: 'Francois One', sans-serif;
   text-align: center;
   color: #595959;
@@ -10,7 +10,7 @@
   margin-bottom: 0
 }
 
-.banner h2 {
+.loginbanner h2 {
   font-family: 'Francois One', sans-serif;
   text-align: center;
   color: #595959;
@@ -21,16 +21,16 @@
 
 }
 
-.sub-title {
+.loginsub-title {
   margin-top: 10;
   font-size: 30px;
 }
 
-.banner img {
+.loginbanner img {
 width: 14%;
 }
 
-.topnav a {
+.logintopnav a {
     color: #a6a6a6;
     text: right;
     font-family: 'Francois One', sans-serif;
@@ -39,7 +39,7 @@ width: 14%;
 
 }
 
-.topnav {
+.logintopnav {
     background-color: #f2f2f2;
     overflow: hidden;
         text-align: left;
