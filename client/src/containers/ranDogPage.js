@@ -6,6 +6,8 @@ import LikeButton from '../components/LikeButton'
 import DislikeButton from '../components/DislikeButton'
 import TopTen from '../components/toTopTen'
 import { ranDogData } from './ranDogPage'
+import './ranDogPage.css';
+
 
 class RanDogData extends Component {
 
@@ -17,9 +19,11 @@ componentDidMount() {
   render() {
       console.log(this.props);
       return(
-        <div>
-        <p className="Doggo">Your doggo: {this.props.ranDog.name} </p>
-        <img src= {this.props.ranDog.pic}></img>
+        <div className="flex-container">
+          <div className="box">
+            <p className="Doggo">Your doggo: {this.props.ranDog.name} </p>
+              <img src= {this.props.ranDog.pic}></img>
+        </div>
         <div>
         <LikeButton/>
          <DislikeButton/>
