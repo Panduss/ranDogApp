@@ -8,7 +8,6 @@ import './LoginPage.css';
 class LoginPage extends PureComponent {
   handleSubmit = data => {
     this.props.login(data.email, data.password)
-
   }
 
   render() {
