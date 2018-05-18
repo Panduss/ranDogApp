@@ -5,6 +5,12 @@ const verify = require('./jwt').verify
 const User = require('./users/model')
 const doglikesRouter = require('./doglikes/router')
 
+
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize(
+  'postgres://postgres:secret@localhost:5432/postgres'
+)
+
 const app = express()
 app.use(bodyParser.json())
 
@@ -48,7 +54,31 @@ app.use(function(req, res, next) {
   } else next()
 })
 
+// <<<<<<< css-done
+// app.get('/doglikes/:id', (request, response) => {
+//   const doglikesId = request.params.id
+// console.log('getting dog')
+//   sequelize.query('SELECT doglikes.userid, count(*) AS TotalLikesPerPerson FROM doglikes GROUP BY doglikes.userid', [doglikesId], (error, result) => {
+//     if (error) {
+//       response.status(500).send({
+//         message: 'Something went wrong with Postgres!',
+//         details: error.message
+//       })
+//     } else if (result.rows[0]) {
+//       response.send(result.rows[0])
+//     } else {
+//       response.status(404).send({
+//         message: 'Likes not found!'
+//       })
+//     }
+//   })
+// })
 
 
+// app.get(doglikesRouter)
+// =======
+
+
+// >>>>>>> master
 app.use(usersRouter)
 app.use(doglikesRouter)

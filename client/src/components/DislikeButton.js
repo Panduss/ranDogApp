@@ -10,7 +10,9 @@ export class DislikeButton extends PureComponent {
 
   render() {
     return (
-      <button onClick={this.handleClick} className="DislikeButton">Dislike</button>
+    <div className="buttondislike">
+      <img src={require('../images/unlike dog.png')} onClick={this.handleClick} className="DislikeButton"/>
+      </div>
     )
   }
 }

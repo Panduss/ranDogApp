@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { fetchDogs, doglikes } from '../actions/page'
-
+import './LikeButton.css'
 
 export class LikeButton extends PureComponent {
 
@@ -12,7 +12,9 @@ export class LikeButton extends PureComponent {
 
   render() {
     return (
-      <button onClick={this.handleClick} className="LikeButton">Like</button>
+      <div className="buttonlike">
+      <img src={require('../images/Dog Paw Heart Clipart 09.jpg')} onClick={this.handleClick} className="LikeButton"/>
+      </div>
     )
   }
 }

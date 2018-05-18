@@ -25,12 +25,31 @@ findTheOne() {
   return
 }
 
-  render() {
-    this.findTheOne()
-      return(
+// <<<<<<< css-done
+// findTheOne() {
+//   console.log(this.props.dogObject, 'hello')
+//   if (this.props.dogObject === undefined) {
+//     return
+//   }
 
-        <p className="Doggo">Your likes: {this.num} </p>
+//   const ourbreeds = this.props.dogObject.filter(like => like.userid != 2)
+//   console.log(ourbreeds)
+// }
 
+//   render() {
+//     this.findTheOne()
+//       return(
+//         <ul>
+//         <li className="Doggo">Your hooman:  </li>
+//         </ul>
+// =======
+//   render() {
+//     this.findTheOne()
+//       return(
+
+//         <p className="Doggo">Your likes: {this.num} </p>
+
+// >>>>>>> master
       )
     }
 }

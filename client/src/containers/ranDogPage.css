@@ -4,8 +4,9 @@
 .box img {
     max-width: 500px;
     max-height: 200px;
-    object-fit: none;
+    object-fit: fill;
     border-radius: 4px;
+    margin-top: 10px;
 }
 
 .flex-container {
@@ -13,14 +14,49 @@
     flex-wrap: nowrap;
     justify-content: center;
     font-family: 'Source Sans Pro', sans-serif;
-}
+    background-color: grey;
+  }
 
-/* .flex-container > div {
+.flex-container > div {
     background-color: white;
-    width:10em;
+
     height:10em;
-    margin: 70px;
     text-align: center;
     line-height: 75px;
     font-size: 30px;
-} */
+}
+
+.flex-container p {
+  font-size: 25px;
+  max-height: 200px;
+  font-family: 'Francois One', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+.banner h1 {
+  font-family: 'Francois One', sans-serif;
+  text-align: center;
+  color: #595959;
+  font-size: 5em;
+  margin-top: 0px;
+  margin-bottom: 0;
+  background-color: #f2f2f2;
+}
+
+.banner img {
+width: 5%;
+}
+
+.buttons{
+  background-color: grey;
+}
+
+.LikeButton {
+  width: 6%;
+}
+
+.DislikeButton {
+  width: 5%;
+}

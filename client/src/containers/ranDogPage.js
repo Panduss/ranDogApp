@@ -13,15 +13,22 @@ componentDidMount() {
 }
   render() {
       return(
+        <div>
+        <div id="banner" className="banner">
+            <h1 className="title">RANDOG</h1>
+        </div>
         <div className="flex-container">
           <div className="box">
-            <p className="Doggo">Your doggo: {this.props.ranDog.name} </p>
+            <p className="Doggo">{this.props.ranDog.name} </p>
               <img src= {this.props.ranDog.pic}></img>
+          </div>
+        <div className="buttons">
+          <LikeButton className="butt"/>
+          <DislikeButton className="butt"/>
+          </div>
+          <div>
+          <TopTen />
         </div>
-        <div>
-        <LikeButton/>
-         <DislikeButton/>
-        <TopTen />
         </div>
         </div>
       )
