@@ -4,7 +4,6 @@ export const FETCH_DOGS = 'FETCH_DOGS'
 export const LOGIN = 'LOGIN'
 export const MATCH = 'MATCH'
 
-
 export function login(DBUrl) {
   return {
     type: LOGIN,
@@ -14,7 +13,6 @@ export function login(DBUrl) {
 
 const DBUrl = 'http://localhost:4001'
 const baseUrl = 'https://dog.ceo/api/breeds/image/random'
-
 
 export const fetchDogs = (response) => (dispatch) => {
   request
@@ -30,7 +28,6 @@ export const fetchDogs = (response) => (dispatch) => {
 
 }
 
-
 export const doglikes = (userId, breed) => (dispatch, getState) => {
 
   const state = getState()
@@ -43,61 +40,17 @@ export const doglikes = (userId, breed) => (dispatch, getState) => {
     .then()
 }
 
-
-
-export const showMatches = (response) => (dispatch) => {
-
-  // const state = getState()
-  // const userId = state.currentUser.id
-  // const dogObject = state.dogObject
+export const showMatches = (currentUser) => (dispatch) => {
 
   request
   .get(`${DBUrl}/doglikes`)
   //.send({userID: dogObject.userId, kind: dogObject.breed })
   .then(result => {
-    console.log(result.body);
+    console.log(result.body, 'hi');
       dispatch({
         type: MATCH,
-        payload: result.body
+        payload: {likes: result.body, currentUser}
       })
     }
   )
 }
-
-// export const showMatches = (response) => (dispatch) => {
-//
-//   // const state = getState()
-//   // const userId = state.currentUser.id
-//   // const dogObject = state.dogObject
-//
-//   request
-//   .get(`${DBUrl}/doglikes`)
-//   //.send({userID: dogObject.userId, kind: dogObject.breed })
-//   .then(result => {
-//     console.log(result.body);
-//       dispatch({
-//         type: MATCH,
-//         payload: {userId: result.body.entries(doglikes.userid), breed: result.body.entries('breed')}
-//       })
-//     }
-//   )
-// }
-
-// export const showMatches = (response) => (dispatch) => {
-//
-//   // const state = getState()
-//   // const userId = state.currentUser.id
-//   // const dogObject = state.dogObject
-//
-//   request
-//   .get(`${DBUrl}/doglikes`)
-//   //.send({userID: dogObject.userId, kind: dogObject.breed })
-//   .then(result => {
-//     console.log(result.body);
-//       dispatch({
-//         type: MATCH,
-//         payload: {userId: result.body[1], breed: result.body[2]}
-//       })
-//     }
-//   )
-// }
