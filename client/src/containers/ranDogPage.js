@@ -26,9 +26,6 @@ componentDidMount() {
           <LikeButton className="butt"/>
           <DislikeButton className="butt"/>
           </div>
-          <div>
-          <TopTen />
-        </div>
         </div>
         </div>
       )
