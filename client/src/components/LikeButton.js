@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { fetchDogs, doglikes } from '../actions/page'
-import './LikeButton.css'
 
 export class LikeButton extends PureComponent {
 

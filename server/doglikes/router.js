@@ -5,7 +5,6 @@ const router = new Router()
 
 
 router.post('/doglikes', (req, res) => {
-  console.log(req.body)
 
   const doglike = {
     userid: req.body.userId,
@@ -33,16 +32,14 @@ router.get('/doglikes', (req, res) => {
   })
   .then(result => {
     res.send(result)
-  })
-  // const match = {
-  //   userid:
+    })
 })
 
 
 
 router.get('/doglikes/:id', (request, response) => {
   const houseId = request.params.id
-console.log('getting dog')
+
   client.query('SELECT * FROM doglikes WHERE id = $1', [doglikesId], (error, result) => {
     if (error) {
       response.status(500).send({

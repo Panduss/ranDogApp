@@ -8,14 +8,13 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 class App extends Component {
   render() {
-    console.log("we're gettin it")
     return (
-    <Router>
+      <Router>
       <div className="App">
         <Route exact path="/" component={RanDogData} />
         <Route exact path="/login" component={LoginPage} />
       </div>
-    </Router>
+      </Router>
     );
   }
 }
