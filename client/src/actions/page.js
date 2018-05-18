@@ -45,13 +45,15 @@ export const doglikes = (userId, breed) => (dispatch, getState) => {
 
 
 
-export const showMatches = (response) => (dispatch, getState) => {
+export const showMatches = (response) => (dispatch) => {
 
-  const state = getState()
-  const userId = state.currentUser.id
+  // const state = getState()
+  // const userId = state.currentUser.id
+  // const dogObject = state.dogObject
 
   request
   .get(`${DBUrl}/doglikes`)
+  //.send({userID: dogObject.userId, kind: dogObject.breed })
   .then(result => {
     console.log(result.body);
       dispatch({
@@ -61,3 +63,41 @@ export const showMatches = (response) => (dispatch, getState) => {
     }
   )
 }
+
+// export const showMatches = (response) => (dispatch) => {
+//
+//   // const state = getState()
+//   // const userId = state.currentUser.id
+//   // const dogObject = state.dogObject
+//
+//   request
+//   .get(`${DBUrl}/doglikes`)
+//   //.send({userID: dogObject.userId, kind: dogObject.breed })
+//   .then(result => {
+//     console.log(result.body);
+//       dispatch({
+//         type: MATCH,
+//         payload: {userId: result.body.entries(doglikes.userid), breed: result.body.entries('breed')}
+//       })
+//     }
+//   )
+// }
+
+// export const showMatches = (response) => (dispatch) => {
+//
+//   // const state = getState()
+//   // const userId = state.currentUser.id
+//   // const dogObject = state.dogObject
+//
+//   request
+//   .get(`${DBUrl}/doglikes`)
+//   //.send({userID: dogObject.userId, kind: dogObject.breed })
+//   .then(result => {
+//     console.log(result.body);
+//       dispatch({
+//         type: MATCH,
+//         payload: {userId: result.body[1], breed: result.body[2]}
+//       })
+//     }
+//   )
+// }
