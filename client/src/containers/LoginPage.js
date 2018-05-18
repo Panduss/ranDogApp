@@ -13,25 +13,21 @@ class LoginPage extends PureComponent {
 
   render() {
     if (this.props.currentUser) return <Redirect to="/" />
-    console.log("hey we're getting something")
     return (
       <div>
-      <div className="logintopnav">
+        <div className="logintopnav">
           <a className="active" href="#signup">Sign Up</a>
-      </div>
-      <div id="loginbanner" className="loginbanner">
+        </div>
+        <div id="loginbanner" className="loginbanner">
           <h1 className="title"><img src={require('../images/Dog Paw Heart Clipart 09.jpg')} />RANDOG
           <img src={require('../images/Dog Paw Heart Clipart 09.jpg')} /></h1>
           <img src={require('../images/map.png')} />
           <h2>Connecting dog lovers in your area</h2>
-      </div>
-      <div>
-
-      </div>
-      <div className="login">
-        <LoginForm onSubmit={this.handleSubmit} />
-        <p>{this.props.loginError}</p>
-      </div>
+        </div>
+        <div className="login">
+          <LoginForm onSubmit={this.handleSubmit} />
+          <p>{this.props.loginError}</p>
+        </div>
       </div>
     )
   }

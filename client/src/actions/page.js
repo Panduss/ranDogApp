@@ -21,9 +21,6 @@ export const fetchDogs = (response) => (dispatch) => {
     .get(`${baseUrl}`)
     .then(response => dispatch({
       type: FETCH_DOGS,
-      // from the base url you getmessage back as response which is an object
-      // if you see how it looks like, the object kind of split into keys and
-      // we get back the 3rd and 4th key from it this way.
       payload: {name: response.body.message.split('\/')[4], pic: response.body.message.split('\/').join('/')}
     }))
     .catch(err => alert(err))
@@ -47,57 +44,13 @@ export const doglikes = (userId, breed) => (dispatch, getState) => {
 
 export const showMatches = (response) => (dispatch) => {
 
-  // const state = getState()
-  // const userId = state.currentUser.id
-  // const dogObject = state.dogObject
-
   request
-  .get(`${DBUrl}/doglikes`)
-  //.send({userID: dogObject.userId, kind: dogObject.breed })
-  .then(result => {
+    .get(`${DBUrl}/doglikes`)
+    .then(result => {
     console.log(result.body);
       dispatch({
         type: MATCH,
         payload: result.body
       })
-    }
-  )
+    })
 }
-
-// export const showMatches = (response) => (dispatch) => {
-//
-//   // const state = getState()
-//   // const userId = state.currentUser.id
-//   // const dogObject = state.dogObject
-//
-//   request
-//   .get(`${DBUrl}/doglikes`)
-//   //.send({userID: dogObject.userId, kind: dogObject.breed })
-//   .then(result => {
-//     console.log(result.body);
-//       dispatch({
-//         type: MATCH,
-//         payload: {userId: result.body.entries(doglikes.userid), breed: result.body.entries('breed')}
-//       })
-//     }
-//   )
-// }
-
-// export const showMatches = (response) => (dispatch) => {
-//
-//   // const state = getState()
-//   // const userId = state.currentUser.id
-//   // const dogObject = state.dogObject
-//
-//   request
-//   .get(`${DBUrl}/doglikes`)
-//   //.send({userID: dogObject.userId, kind: dogObject.breed })
-//   .then(result => {
-//     console.log(result.body);
-//       dispatch({
-//         type: MATCH,
-//         payload: {userId: result.body[1], breed: result.body[2]}
-//       })
-//     }
-//   )
-// }

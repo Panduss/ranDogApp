@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { fetchDogs } from '../actions/page'
 import LikeButton from '../components/LikeButton'
 import DislikeButton from '../components/DislikeButton'
-import TopTen from '../components/toTopTen'
 import './ranDogPage.css';
 
 class RanDogData extends Component {
@@ -14,21 +13,21 @@ componentDidMount() {
   render() {
       return(
         <div>
-        <div id="banner" className="banner">
+          <div id="banner" className="banner">
             <h1 className="title">RANDOG</h1>
-        </div>
-        <div className="flex-container">
-          <div className="box">
-            <p className="Doggo">{this.props.ranDog.name} </p>
+          </div>
+          <div className="flex-container">
+            <div className="box">
+              <p className="Doggo">{this.props.ranDog.name} </p>
               <img src= {this.props.ranDog.pic}></img>
-          </div>
-        <div className="buttons">
-          <LikeButton className="butt"/>
-          <DislikeButton className="butt"/>
+            </div>
+            <div className="buttons">
+              <LikeButton className="butt"/>
+              <DislikeButton className="butt"/>
+            </div>
           </div>
         </div>
-        </div>
-      )
+        )
     }
 }
 
